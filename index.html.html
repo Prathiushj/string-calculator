@@ -1,0 +1,146 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>String Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            width: 400px;
+            text-align: center;
+        }
+        h1 {
+            color: #4a90e2;
+        }
+        input[type="text"] {
+            width: 90%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 2px solid #4a90e2;
+            border-radius: 5px;
+            outline: none;
+        }
+        button {
+            background-color: #4a90e2;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #357ab8;
+        }
+        #result {
+            margin-top: 20px;
+            font-weight: bold;
+            padding: 10px;
+            border: 1px solid #4a90e2;
+            border-radius: 5px;
+            background-color: #e6f7ff;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>String Calculator</h1>
+
+    <label for="textbox1"><b>TextBox 1<b></label>
+    <input type="text" id="textbox1"><br>
+
+    <label for="textbox2">TextBox 2</label>
+    <input type="text" id="textbox2"><br>
+
+    <button onclick="calculateLength()">Length</button>
+    <button onclick="reverseString()">Reverse</button>
+    <button onclick="toCapitalLetters()">Capital Letters</button>
+    <button onclick="toSmallLetters()">Small Letters</button>
+    <button onclick="toggleCase()">Toggle Case</button>
+    <button onclick="removeSpaces()">Remove Spaces</button>
+    <button onclick="removeSpecialChars()">Remove Special Characters</button>
+    <button onclick="substringFromIndex()">Substring from Index</button>
+    <button onclick="replaceCharacter()">Replace Character</button>
+    <button onclick="concatenateStrings()">Concatenate</button>
+
+    <div id="result"></div>
+</div>
+
+<script>
+    function calculateLength() {
+        const text = document.getElementById('textbox1').value;
+        document.getElementById('result').innerText = 'Length: ' + text.length;
+    }
+
+    function reverseString() {
+        const text = document.getElementById('textbox1').value;
+        document.getElementById('result').innerText = 'Reversed: ' + text.split('').reverse().join('');
+    }
+
+    function toCapitalLetters() {
+        const text = document.getElementById('textbox1').value;
+        document.getElementById('result').innerText = 'Capital Letters: ' + text.toUpperCase();
+    }
+    function toSmallLetters() {
+        const text = document.getElementById('textbox1').value;
+        document.getElementById('result').innerText = 'Small Letters: ' + text.toLowerCase();
+    }
+
+    function toggleCase() {
+        const text = document.getElementById('textbox1').value;
+        document.getElementById('result').innerText = 'Toggled Case: ' + [...text].map(c => 
+            c === c.toUpperCase() ? c.toLowerCase() : c.toUpperCase()).join('');
+    }
+
+    function removeSpaces() {
+        const text = document.getElementById('textbox1').value;
+        document.getElementById('result').innerText = 'Removed Spaces: ' + text.replace(/\s/g, '');
+    }
+
+    function removeSpecialChars() {
+        const text = document.getElementById('textbox1').value;
+        document.getElementById('result').innerText = 'Removed Special Characters: ' + text.replace(/[^a-zA-Z0-9]/g, '');
+    }
+
+    function substringFromIndex() {
+        const text = document.getElementById('textbox1').value;
+        const index = prompt('Enter starting index:');
+        if (index >= 0 && index < text.length) {
+            document.getElementById('result').innerText = 'Substring: ' + text.substring(index);
+        } else {
+            document.getElementById('result').innerText = 'Invalid index!';
+        }
+    }
+    function replaceCharacter() {
+        const text = document.getElementById('textbox1').value;
+        const oldChar = prompt("Enter the character to replace:");
+        const newChar = prompt("Enter the new character:");
+        const result = text.split(oldChar).join(newChar);
+        document.getElementById('result').innerText = 'Replaced: ' + result; 
+    }
+
+
+    function concatenateStrings() {
+        const text1 = document.getElementById('textbox1').value;
+        const text2 = document.getElementById('textbox2').value;
+        document.getElementById('result').innerText = 'Concatenated: ' + text1 + text2;
+    }
+</script>
+
+</body>
+</html>
